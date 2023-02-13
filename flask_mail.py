@@ -153,9 +153,9 @@ class Connection(object):
 
     def configure_host(self):
         if self.mail.use_ssl:
-            host = smtplib.SMTP_SSL(self.mail.server, self.mail.port)
+            host = smtplib.SMTP_SSL(host=self.mail.server, port=self.mail.port, timeout=10)
         else:
-            host = smtplib.SMTP(self.mail.server, self.mail.port)
+            host = smtplib.SMTP(host=self.mail.server, port=self.mail.port, timeout=10)
 
         host.set_debuglevel(int(self.mail.debug))
 
